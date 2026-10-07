@@ -1,0 +1,22 @@
+{
+  "name": "inbox-agent",
+  "version": "0.1.0",
+  "description": "An inbox agent that eats a Gmail backlog safely: rules decide first, Claude only sees what the rules cannot settle, and anything unsure is flagged for a person.",
+  "scripts": {
+    "test": "tsx --test test/*.test.ts",
+    "demo": "tsx demo/run.ts",
+    "typecheck": "tsc"
+  },
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
