@@ -27,9 +27,10 @@ export async function keep(
   if (!settings.keepDomains.includes(domain)) settings.keepDomains.push(domain);
   settings.blockDomains = settings.blockDomains.filter((d) => d.toLowerCase() !== domain);
 
-  // Undo. If Gary already ate this one, it goes back to the inbox. It is
-  // still there to go back: eaten mail is archived, not deleted.
-  const restored = row.resolution === "unsubscribe" || row.resolution === "blocked";
+  // Undo. If Gary ate this one, it goes back to the inbox. It is still there
+  // to go back: eaten mail is archived, not deleted. As in production, only
+  // Gary's own eats are reversed here; a message the user blocked stays put.
+  const restored = row.resolution === "unsubscribe";
   if (restored) await mailbox.modify(messageId, ["INBOX"], [EATEN_LABEL]);
   store.update(messageId, { status: "resolved", resolution: "whitelist", resolvedAt: at() });
   return { restored };
