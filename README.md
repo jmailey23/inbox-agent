@@ -1,8 +1,8 @@
 # inbox-agent
 
-An agent that eats a Gmail backlog without being trusted to: rules decide first, Claude only sees what the rules cannot settle, and anything unsure is flagged for a person instead of acted on.
+An inbox agent built so it never has to be trusted: rules decide first, Claude only sees what the rules cannot settle, and anything unsure is flagged for a person instead of acted on.
 
-This is the decision engine behind [Snailmail](https://getsnailmail.app), where an agent called Gary works through years of unread mail, rewritten here as a standalone TypeScript module with a fictional mailbox (Maya Torres, every sender under `.example`) so the design can be read in public. The production system is private and written in Python; its numbers are below.
+This is the decision engine behind [Snailmail](https://getsnailmail.app), an iPhone email app [on the App Store](https://apps.apple.com/app/id6825403744) where a sidekick called Gary works through years of unread mail, rewritten here as a standalone TypeScript module with a fictional mailbox (Maya Torres, every sender under `.example`) so the design can be read in public. The production system is private and written in Python; its numbers are below.
 
 ## The idea
 
@@ -43,9 +43,11 @@ flowchart LR
 
 ## The production system
 
-Snailmail runs Gary for paying users on FastAPI, Supabase Postgres, APScheduler and Railway, with a web dashboard, an iOS app, and a way to drive Gary from inside Gmail by moving a message into a Gary-Keep or Gary-Block label. It passed Google's OAuth verification for restricted Gmail scopes and a CASA Tier 2 security assessment. It costs $5 a month after a 7 day free trial.
+Snailmail is a native iPhone email app, live on the App Store since November 15, 2026. The inbox is free; Gary is $2.99 a month. Behind it are FastAPI, Supabase Postgres, APScheduler and Railway, plus a way to drive Gary from inside Gmail by moving a message into a Gary-Keep or Gary-Block label. It passed Google's OAuth verification for restricted Gmail scopes and a CASA Tier 2 security assessment.
 
-As of October 7, 2026:
+**Production went one step further in November: Gary no longer acts on his own.** With a fast swipe-to-review screen in the app, a person deciding became cheap, so everything Gary deems unwanted is now flagged for review, and only senders the user blocked are cleared automatically. This module still models the full dial, which is how production ran for its first 720,000 messages.
+
+As of October 7, 2026, before that change:
 
 - 24 people have connected Gmail; 22 connections are active
 - 29,442 completed engine runs since February 24, 2026: 9,966 in Deep Clean and 19,476 in Maintain
