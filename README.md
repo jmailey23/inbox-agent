@@ -47,7 +47,7 @@ Snailmail is a native iPhone email app, live on the App Store since November 15,
 
 **Production went one step further in November: Gary no longer acts on his own.** With a fast swipe-to-review screen in the app, a person deciding became cheap, so everything Gary deems unwanted is now flagged for review, and only senders the user blocked are cleared automatically. This module still models the full dial, which is how production ran for its first 720,000 messages.
 
-As of October 7, 2026, before that change:
+By November 24, 2026, the engine had processed 731,226 messages across 40,525 runs, for 29 connected Gmail accounts. The breakdown below is from October 7, 2026, before that change:
 
 - 24 people have connected Gmail; 22 connections are active
 - 29,442 completed engine runs since February 24, 2026: 9,966 in Deep Clean and 19,476 in Maintain
